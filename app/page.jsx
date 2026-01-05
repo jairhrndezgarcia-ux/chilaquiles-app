@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Image from "next/image";
 
 export default function Home() {
 
@@ -85,45 +86,42 @@ export default function Home() {
   // --- VISTA 1: LA BIENVENIDA ---
   if (mostrarBienvenida) {
     return (
-      <div className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-black">
+      <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-black">
         
-        {/* 1. EL NUEVO FONDO: Foto de Chilaquiles */}
-        {/* Usamos una foto real para que se vea apetecible. */}
+        {/* 1. EL FONDO (Background) */}
         <div 
-            className="absolute inset-0 bg-cover bg-center z-0 opacity-60"
+            className="absolute inset-0 z-0 bg-cover bg-center opacity-60"
             style={{ 
-              // Foto de ejemplo de Unsplash. ¡Tú puedes poner la tuya después!
               backgroundImage: "url('https://tse1.mm.bing.net/th/id/OIP.40TtBVP6woVbPpCMMownaQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3')",
-              filter: "blur(10px)" // Desenfoque fuerte para que el texto se lea bien
+              filter: "blur(10px)" 
             }}
         ></div>
 
-        {/* 2. EL CONTENIDO CENTRAL */}
-        <div className="relative z-10 text-center p-6 animate-fade-in-up">
+        {/* CONTENEDOR CENTRAL */}
+        {/* CAMBIO 1: Aumenté max-w-[600px] a max-w-[90%] para que ocupe casi toda la pantalla si es necesario */}
+        <div className="relative z-10 flex w-full max-w-[95%] flex-col items-center justify-center p-2 md:max-w-[1000px]">
           
-          {/* TU LOGO LIMPIO (Sin el fondo negro) */}
-          {/* Asegúrate de que el nombre del archivo sea el correcto, ej: logo.png */}
-          <img 
-            src="/logo.png" 
-            alt="Logo Chilikante" 
-            // Quitamos el 'scale' porque ya no hay que ocultar nada.
-            // Usamos rounded-full para asegurar el recorte circular perfecto.
-            className="w-56 h-56 mx-auto mb-8 rounded-full shadow-2xl border-4 border-white bg-white" 
+          {/* LOGO CON ZOOM */}
+          <div className="animacion-zoom w-full">
+          <Image
+            src="/logo2.0.png" 
+            alt="Logo Chilikante"
+            width={800}
+            height={800}
+            className="h-auto w-full object-contain drop-shadow-8xl mb-2" /* mb-8 da espacio entre logo y botón */
+            priority
           />
-
-          <h1 className="text-5xl font-black mb-2 text-white tracking-tight drop-shadow-lg">
-            CHILIKANTE
-          </h1>
-          <p className="text-xl mb-10 text-gray-100 font-medium tracking-widest uppercase drop-shadow-md">
-            De México al paladar
-          </p>
+          </div>
           
+          {/* BOTÓN CON RETRASO */}
+          {/* CAMBIO 2: Agregué la clase 'animacion-boton' */}
           <button 
             onClick={() => setMostrarBienvenida(false)}
-            className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-12 rounded-full text-xl shadow-xl transition-transform hover:scale-105 hover:shadow-2xl"
+            className="animacion-boton mt-8 transform rounded-full bg-red-600 px-8 py-3 text-2xl tracking-wider text-white shadow-xl transition-all hover:scale-105 hover:bg-red-700 hover:shadow-2xl"
           >
             ORDENAR AHORA
           </button>
+
         </div>
       </div>
     );

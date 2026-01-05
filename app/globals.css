@@ -24,3 +24,38 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Animación de Zoom personalizada */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.1); /* Empieza casi invisible y diminuto */
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1); /* Termina en su tamaño real */
+    opacity: 1;
+  }
+}
+
+/* 2. Nueva animación para el Botón (Aparece después) */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px); /* Empieza un poco más abajo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Sube a su lugar */
+  }
+}
+
+.animacion-zoom {
+  opacity: 0; /* Empieza invisible obligatoriamente */
+  /* La animación dura 2 segundos y tiene un rebote suave al final */
+  animation: zoomIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.animacion-boton {
+  opacity: 0; /* ⚠️ ESTO ES CLAVE: Empieza invisible */
+  animation: fadeUp 0.8s ease-out forwards 1.5s;   
+}
