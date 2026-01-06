@@ -178,8 +178,8 @@ export default function Home() {
           <div className="bg-white rounded-t-3xl md:rounded-3xl w-full max-w-lg p-6 animate-slide-up h-[85vh] md:h-auto overflow-y-auto">
             
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-black">{platilloSeleccionado.nombre}</h3>
-              <button onClick={() => setModalAbierto(false)} className="bg-gray-100 p-2 rounded-full">✕</button>
+              <h3 className="text-3xl font-black text-gray-700">{platilloSeleccionado.nombre}</h3>
+              <button onClick={() => setModalAbierto(false)} className="bg-gray-700 p-2 rounded-full">✕</button>
             </div>
 
             {/* SECCIÓN EXTRAS ($$$) */}
@@ -210,6 +210,10 @@ export default function Home() {
                <div className="grid grid-cols-2 gap-3">
                  {/* Aquí puedes reutilizar los botones grandes del código anterior si te gustaron más */}
                  <button 
+                    onClick={() => toggleExtra('sinQueso')}
+                    className={`p-3 rounded-lg font-bold border-2 ${extras.sinQueso ? 'border-red-500 text-red-600 bg-red-50' : 'border-gray-200 text-gray-500'}`}
+                 >🚫 Sin Queso</button>
+                 <button 
                     onClick={() => toggleExtra('sinCrema')}
                     className={`p-3 rounded-lg font-bold border-2 ${extras.sinCrema ? 'border-red-500 text-red-600 bg-red-50' : 'border-gray-200 text-gray-500'}`}
                  >🚫 Sin Crema</button>
@@ -217,6 +221,10 @@ export default function Home() {
                     onClick={() => toggleExtra('conCebolla')}
                     className={`p-3 rounded-lg font-bold border-2 ${extras.conCebolla ? 'border-green-500 text-green-600 bg-green-50' : 'border-gray-200 text-gray-500'}`}
                  >🧅 Con Cebolla</button>
+                  <button
+                    onClick={() => toggleExtra('conCilantro')}
+                    className={`p-3 rounded-lg font-bold border-2 ${extras.conCilantro ? 'border-green-500 text-green-600 bg-green-50' : 'border-gray-200 text-gray-500'}`}
+                  >🌿 Con Cilantro</button>
                </div>
             </div>
 
@@ -236,7 +244,6 @@ export default function Home() {
         <p className="text-white font-bold mb-2">TICKET DE COCINA (SIMULACIÓN):</p>
         <pre>{JSON.stringify(carrito, null, 2)}</pre>
       </div>
-
     </div>
   );
 }
