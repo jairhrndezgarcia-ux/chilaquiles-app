@@ -11,9 +11,9 @@ export default function Home() {
 
   // --- 1. DATOS ---
   const menu = [
-    { id: 1, nombre: "Sencillos", precio: 50, descripcion: "La base clásica.", proteina: null, imagen: "https://th.bing.com/th/id/R.30dd3707abb673f9d677d8399ffd6d28?rik=xS3IFJvwRweQtw&pid=ImgRaw&r=0" },
-    { id: 2, nombre: "Con Pollo", precio: 60, descripcion: "Con pechuga deshebrada.", proteina: "Pollo", imagen: "https://i.pinimg.com/originals/2c/86/37/2c863707d836553026b3ec9f8205a032.jpg" },
-    { id: 3, nombre: "Con Arrachera", precio: 65, descripcion: "Con arrachera marinada.", proteina: "Arrachera", imagen: "https://izekesillatok.hu/wp-content/uploads/2025/05/Chilaquiles-con-arrachera.webp"}
+    { id: 1, nombre: "Sencillos", precio: 50, descripcion: "Acompañados con Frijol y Rebanadas de Pan.", proteina: null, imagen: "https://th.bing.com/th/id/R.30dd3707abb673f9d677d8399ffd6d28?rik=xS3IFJvwRweQtw&pid=ImgRaw&r=0" },
+    { id: 2, nombre: "Con Pollo", precio: 60, descripcion: "La Base + Con pechuga deshebrada.", proteina: "Pollo", imagen: "https://i.pinimg.com/originals/2c/86/37/2c863707d836553026b3ec9f8205a032.jpg" },
+    { id: 3, nombre: "Con Arrachera", precio: 65, descripcion: "La Base + Con arrachera marinada.", proteina: "Arrachera", imagen: "https://izekesillatok.hu/wp-content/uploads/2025/05/Chilaquiles-con-arrachera.webp"}
   ];
 
   // --- 2. ESTADOS (Memoria) ---
