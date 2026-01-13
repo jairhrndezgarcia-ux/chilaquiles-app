@@ -169,24 +169,55 @@ export default function Home() {
 
   // 2. VISTA REGISTRO (Pedir Nombre)
   if (vistaActual === 'registro') {
+
+    // Función para validar que solo sean letras y espacios
+    const manejarCambioNombre = (e) => {
+      const valor = e.target.value;
+      // Esta Regex permite: Letras (a-z), Mayúsculas (A-Z), Acentos (áéí...), Ñ y Espacios (\s)
+      const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]*$/;
+
+      // Solo actualizamos el estado SI cumple con la regla
+      if (soloLetras.test(valor)) {
+        setNombreCliente(valor);
+      }
+    };
+
     return (
-      <div className="min-h-screen bg-neutral-900 flex flex-col items-center justify-center p-6 text-white">
-        <h2 className="text-3xl font-bold mb-2">¡Bienvenido! 👋</h2>
-        <p className="mb-8 text-gray-400">¿A nombre de quién sale el pedido?</p>
+      
+      <div className="relative min-h-screen flex flex-col items-center justify-center p-6 text-white overflow-hidden bg-black">
+        {/* FONDO */}
+        <div className="absolute inset-0 z-0 bg-cover bg-center opacity-60"
+            style={{ backgroundImage: "url('https://tse1.mm.bing.net/th/id/OIP.40TtBVP6woVbPpCMMownaQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3')", filter: "blur(10px)" }}>
+        </div>
+        
+        {/* CONTENIDO */}
+        <div className="relative z-10 flex flex-col items-center w-full max-w-md">     
+        <h2 className="text-3xl font-bold mb-2 text-center shadow-black drop-shadow-lg">¡Bienvenido! 👋</h2>
+        <p className="mb-8 text-gray-100 font-medium text-center drop-shadow-md">¿A nombre de quién sale el pedido?</p>
+        
         <input 
           type="text" 
           placeholder="Escribe tu nombre..."
           value={nombreCliente}
-          onChange={(e) => setNombreCliente(e.target.value)}
-          className="w-full max-w-sm p-4 rounded-xl text-black text-xl font-bold text-center mb-6 focus:outline-none focus:ring-4 focus:ring-red-500"
+          onChange={manejarCambioNombre}
+          className="w-full p-4 rounded-xl text-white text-xl font-bold text-center mb-6 shadow-xl"
         />
         <button 
-          disabled={!nombreCliente.trim()}
+          disabled={nombreCliente.trim().length < 3 }
           onClick={() => setVistaActual('menu')}
-          className="w-full max-w-sm bg-red-600 py-4 rounded-xl font-bold text-xl disabled:opacity-50 disabled:bg-gray-600"
+          className="w-full bg-red-600 py-4 rounded-xl font-bold text-xl text-white shadow-xl transition-transform hover:scale-105 disabled:opacity-50 disabled:bg-gray-600"
         >
           VER EL MENÚ ➔
         </button>
+        {/* Mensajes de error dinámicos */}
+            <div className="h-8"> {/* Espacio reservado para que no brinque el diseño */}
+              {nombreCliente.length > 0 && nombreCliente.trim().length < 3 && (
+                <p className="text-sm text-red-300 font-bold animate-pulse text-center">
+                  El nombre es muy corto...
+                </p>
+              )}
+            </div>
+        </div>   
       </div>
     );
   }
